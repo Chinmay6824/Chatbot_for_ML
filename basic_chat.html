@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic ML Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .message {
+            padding: 8px;
+            margin: 10px 0;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        form {
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #0055aa;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic ML Chat</h1>
+    
+    <div class="message">
+        <p><strong>Bot:</strong> Welcome! I'm your ML Chatbot. Ask me about machine learning.</p>
+    </div>
+    
+    <div class="message">
+        <p><strong>Bot:</strong> Here are some topics I can help with:</p>
+        <ul>
+            <li>Neural Networks</li>
+            <li>Machine Learning Algorithms</li>
+            <li>Evaluation Metrics</li>
+            <li>Deep Learning</li>
+            <li>Classification & Regression</li>
+        </ul>
+    </div>
+    
+    <form action="response.html" method="get">
+        <input type="text" name="question" placeholder="Type your question here..." required>
+        <input type="submit" value="Ask Question">
+    </form>
+    
+    <a href="neural_networks.html">Learn about Neural Networks</a>
+    <a href="algorithms.html">Learn about ML Algorithms</a>
+    <a href="evaluation.html">Learn about Evaluation Metrics</a>
+</body>
+</html> 

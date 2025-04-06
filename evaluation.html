@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluation Metrics - ML Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .content {
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        a.back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.back:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evaluation Metrics in Machine Learning</h1>
+    
+    <div class="content">
+        <h2>Classification Metrics</h2>
+        <ul>
+            <li><strong>Accuracy:</strong> The proportion of correct predictions among the total number of predictions.</li>
+            <li><strong>Precision:</strong> The proportion of true positive predictions among all positive predictions.</li>
+            <li><strong>Recall (Sensitivity):</strong> The proportion of true positive predictions among all actual positives.</li>
+            <li><strong>F1 Score:</strong> The harmonic mean of precision and recall, providing a balance between both.</li>
+            <li><strong>Specificity:</strong> The proportion of true negative predictions among all actual negatives.</li>
+            <li><strong>ROC Curve:</strong> A plot of the true positive rate against the false positive rate at various threshold settings.</li>
+            <li><strong>AUC (Area Under the ROC Curve):</strong> A measure of the model's ability to distinguish between classes.</li>
+        </ul>
+        
+        <h2>Regression Metrics</h2>
+        <ul>
+            <li><strong>Mean Absolute Error (MAE):</strong> The average of absolute differences between predicted and actual values.</li>
+            <li><strong>Mean Squared Error (MSE):</strong> The average of squared differences between predicted and actual values.</li>
+            <li><strong>Root Mean Squared Error (RMSE):</strong> The square root of MSE, providing an error in the same units as the target variable.</li>
+            <li><strong>R-squared (Coefficient of Determination):</strong> The proportion of the variance in the dependent variable that is predictable from the independent variables.</li>
+            <li><strong>Mean Absolute Percentage Error (MAPE):</strong> The average of percentage differences between predicted and actual values.</li>
+        </ul>
+        
+        <h2>Cross-Validation Techniques</h2>
+        <ul>
+            <li><strong>K-Fold Cross-Validation:</strong> Splits the data into k subsets and trains the model k times, each time using a different subset as the test set.</li>
+            <li><strong>Stratified K-Fold:</strong> Ensures that each fold maintains the same proportion of class labels as the original dataset.</li>
+            <li><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> Uses a single observation for testing and the rest for training in each iteration.</li>
+            <li><strong>Time Series Cross-Validation:</strong> Specialized technique for time series data that respects the temporal order of observations.</li>
+        </ul>
+        
+        <h2>Confusion Matrix</h2>
+        <p>A table used to describe the performance of a classification model on test data where true values are known:</p>
+        <ul>
+            <li><strong>True Positive (TP):</strong> Correctly predicted positive cases</li>
+            <li><strong>False Positive (FP):</strong> Incorrectly predicted positive cases (Type I error)</li>
+            <li><strong>True Negative (TN):</strong> Correctly predicted negative cases</li>
+            <li><strong>False Negative (FN):</strong> Incorrectly predicted negative cases (Type II error)</li>
+        </ul>
+    </div>
+    
+    <a href="basic_chat.html" class="back">Back to Chat</a>
+</body>
+</html> 

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ultra Simple ML Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        
+        .chat-area {
+            border: 1px solid #ddd;
+            padding: 15px;
+            min-height: 200px;
+            max-height: 400px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+        }
+        
+        .user-message {
+            background-color: #e3f2fd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .input-form {
+            display: flex;
+        }
+        
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .topics {
+            margin-top: 20px;
+        }
+        
+        .topic-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .topic-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .share-button {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-button:hover {
+            background-color: #F57C00;
+        }
+        
+        .share-icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <h1>ML Chatbot</h1>
+            <a href="share_ml_chatbot.html" class="share-button">
+                <span class="share-icon">📤</span> Share
+            </a>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <div class="bot-message">Hello! I'm a simple ML chatbot. Ask me about machine learning concepts.</div>
+        </div>
+        
+        <div class="input-form">
+            <input type="text" id="userQuestion" placeholder="Type your question...">
+            <button onclick="askQuestion()">Ask</button>
+        </div>
+        
+        <div class="topics">
+            <h3>Try these topics:</h3>
+            <div class="topic-buttons">
+                <button class="topic-button" onclick="setQuestion('What is machine learning?')">Machine Learning</button>
+                <button class="topic-button" onclick="setQuestion('What is a neural network?')">Neural Network</button>
+                <button class="topic-button" onclick="setQuestion('What is deep learning?')">Deep Learning</button>
+                <button class="topic-button" onclick="setQuestion('What is CNN?')">CNN</button>
+                <button class="topic-button" onclick="setQuestion('What is LSTM?')">LSTM</button>
+                <button class="topic-button" onclick="setQuestion('What is reinforcement learning?')">Reinforcement Learning</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Expanded ML responses database
+        const responses = {
+            "machine learning": "Machine learning is a field of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed.",
+            "artificial intelligence": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans.",
+            "data science": "Data science is an interdisciplinary field that uses scientific methods, algorithms, and systems to extract insights and knowledge from structured and unstructured data.",
+            "deep learning": "Deep learning is a specialized form of machine learning that uses neural networks with multiple layers to learn complex data patterns.",
+            "neural network": "A neural network is a model inspired by the human brain, consisting of interconnected layers of nodes (neurons) that can learn representations of data.",
+            "supervised learning": "Supervised learning involves training a model on labeled data, where both inputs and corresponding outputs are provided.",
+            "unsupervised learning": "Unsupervised learning is when a model learns patterns from data that has no labels or explicit outputs.",
+            "reinforcement learning": "Reinforcement learning is a type of learning where an agent interacts with an environment and learns to make decisions by receiving rewards or penalties.",
+            "classification": "Classification is a supervised learning task where the goal is to predict a discrete label or category.",
+            "regression": "Regression is a supervised learning task where the goal is to predict a continuous numerical value.",
+            "clustering": "Clustering is an unsupervised learning task that groups similar data points into clusters without predefined labels.",
+            "dimensionality reduction": "Dimensionality reduction reduces the number of input variables in a dataset while preserving important information.",
+            "overfitting": "Overfitting occurs when a model learns the noise in the training data and performs poorly on unseen data.",
+            "underfitting": "Underfitting happens when a model is too simple to capture the data's underlying patterns, resulting in poor performance.",
+            "training data": "Training data is the dataset used to teach a machine learning model how to make predictions or decisions.",
+            "test data": "Test data is used to evaluate the performance of a trained model on unseen data.",
+            "validation data": "Validation data is used during training to tune model parameters and prevent overfitting.",
+            "feature": "A feature is an individual measurable property or characteristic used as input for the model.",
+            "label": "A label is the correct output or result that a machine learning model aims to predict.",
+            "feature engineering": "Feature engineering is the process of selecting, modifying, or creating new features to improve model performance.",
+            "model training": "Model training is the process where a machine learning algorithm learns patterns from the data.",
+            "model evaluation": "Model evaluation is the process of assessing how well a model performs using metrics like accuracy, precision, and recall.",
+            "accuracy": "Accuracy is the ratio of correctly predicted instances to the total instances.",
+            "precision": "Precision is the ratio of true positive predictions to the total predicted positives.",
+            "recall": "Recall is the ratio of true positive predictions to the total actual positives.",
+            "f1-score": "The F1-score is the harmonic mean of precision and recall, used to balance both metrics.",
+            "confusion matrix": "A confusion matrix is a table used to describe the performance of a classification model by showing true positives, false positives, true negatives, and false negatives.",
+            "cross-validation": "Cross-validation is a technique for assessing model performance by dividing the data into training and testing sets multiple times.",
+            "k-fold cross-validation": "K-fold cross-validation splits the dataset into k equal parts and rotates them as training and validation sets to get a more robust evaluation.",
+            "bias": "Bias is the error introduced by approximating a real-world problem with a simplified model.",
+            "variance": "Variance is the error introduced due to a model's sensitivity to small fluctuations in the training dataset.",
+            "logistic regression": "Logistic regression is a classification algorithm used to predict binary outcomes using a logistic function.",
+            "linear regression": "Linear regression is used to model the relationship between a dependent variable and one or more independent variables by fitting a linear equation.",
+            "decision tree": "A decision tree is a flowchart-like model that splits data based on feature values to make decisions or predictions.",
+            "random forest": "Random Forest is an ensemble method that builds multiple decision trees and combines their results to improve accuracy and reduce overfitting.",
+            "k-nearest neighbors": "K-Nearest Neighbors (KNN) is a simple algorithm that classifies data based on the closest training examples in the feature space.",
+            "support vector machine": "Support Vector Machine (SVM) is a powerful classifier that finds the optimal hyperplane that best separates data into classes.",
+            "naive bayes": "Naive Bayes is a probabilistic classifier based on applying Bayes' theorem with strong independence assumptions between features.",
+            "ensemble learning": "Ensemble learning combines multiple models to produce a better performing model than any individual one.",
+            "boosting": "Boosting is an ensemble technique that trains models sequentially, each trying to correct the errors of the previous one.",
+            "bagging": "Bagging, or Bootstrap Aggregating, reduces variance by training models on different subsets of the data and averaging their results.",
+            "gradient boosting": "Gradient Boosting is a machine learning technique for regression and classification that builds models sequentially to reduce errors.",
+            "xgboost": "XGBoost is an optimized gradient boosting library that is fast, efficient, and widely used in machine learning competitions.",
+            "lightgbm": "LightGBM is a gradient boosting framework that uses tree-based learning algorithms and is designed for high performance.",
+            "catboost": "CatBoost is a gradient boosting library from Yandex that is especially effective with categorical features.",
+            "principal component analysis": "Principal Component Analysis (PCA) is a technique used for dimensionality reduction by transforming variables into a smaller number of uncorrelated variables called principal components.",
+            "t-sne": "t-Distributed Stochastic Neighbor Embedding (t-SNE) is a non-linear dimensionality reduction technique used for data visualization.",
+            "convolutional neural network": "A Convolutional Neural Network (CNN) is a type of deep learning model used for image recognition and classification tasks.",
+            "recurrent neural network": "A Recurrent Neural Network (RNN) is a neural network designed for sequential data, where connections between nodes form directed cycles.",
+            "lstm": "Long Short-Term Memory (LSTM) is a special type of RNN that can remember long-term dependencies in sequence data.",
+            "gru": "Gated Recurrent Unit (GRU) is a type of RNN similar to LSTM but with fewer parameters, making it faster to train.",
+            "autoencoder": "An autoencoder is a neural network used for unsupervised learning that learns to compress and then reconstruct data.",
+            "generative adversarial network": "A Generative Adversarial Network (GAN) consists of a generator and a discriminator that compete, producing highly realistic synthetic data.",
+            "transfer learning": "Transfer learning is a method where a model trained on one task is reused as the starting point for a model on another task.",
+            "one-hot encoding": "One-hot encoding is a method to convert categorical variables into a binary vector representation.",
+            "label encoding": "Label encoding converts each value of a categorical column into a unique integer.",
+            "feature scaling": "Feature scaling standardizes the range of independent variables to improve the performance of machine learning algorithms.",
+            "normalization": "Normalization rescales the values into a range of [0,1] to ensure each feature contributes equally to the result.",
+            "standardization": "Standardization transforms data to have zero mean and unit variance, often required for algorithms like SVM or KNN.",
+            "early stopping": "Early stopping is a regularization technique where training is halted when performance on validation data starts to degrade.",
+            "dropout": "Dropout is a regularization method where random neurons are ignored during training to prevent overfitting.",
+            "cnn": "Convolutional Neural Networks (CNNs) are specialized neural networks used primarily for image processing and recognition tasks.",
+            "rnn": "Recurrent Neural Networks (RNNs) are neural networks designed for sequential data where connections between nodes form directed cycles.",
+            "gan": "Generative Adversarial Networks (GANs) consist of generator and discriminator networks that compete to produce realistic synthetic data.",
+            "svm": "Support Vector Machines (SVM) are powerful classifiers that find the optimal hyperplane to separate data into different classes."
+        };
+        
+        function askQuestion() {
+            const questionInput = document.getElementById('userQuestion');
+            const chatArea = document.getElementById('chatArea');
+            const question = questionInput.value.trim();
+            
+            if (question === '') {
+                return;
+            }
+            
+            // Add user question to chat
+            const userMessage = document.createElement('div');
+            userMessage.className = 'user-message';
+            userMessage.textContent = question;
+            chatArea.appendChild(userMessage);
+            
+            // Generate simple response
+            let botResponse = "I don't know about that yet. Try asking about machine learning concepts like neural networks, deep learning, or supervised learning.";
+            
+            // Process the question for better matching
+            const processedQuestion = question.toLowerCase()
+                .replace(/what is/g, '')
+                .replace(/what are/g, '')
+                .replace(/explain/g, '')
+                .replace(/tell me about/g, '')
+                .replace(/\?/g, '')
+                .trim();
+                
+            // Try to find a direct match first
+            for (const [key, value] of Object.entries(responses)) {
+                // Try different patterns
+                if (processedQuestion === key || 
+                    processedQuestion === `a ${key}` || 
+                    processedQuestion === `an ${key}` || 
+                    processedQuestion === `the ${key}`) {
+                    botResponse = value;
+                    break;
+                }
+            }
+            
+            // If no direct match, try partial matching
+            if (botResponse.startsWith("I don't know")) {
+                for (const [key, value] of Object.entries(responses)) {
+                    if (processedQuestion.includes(key)) {
+                        botResponse = value;
+                        break;
+                    }
+                }
+            }
+            
+            // Add bot response
+            const botMessage = document.createElement('div');
+            botMessage.className = 'bot-message';
+            botMessage.textContent = botResponse;
+            chatArea.appendChild(botMessage);
+            
+            // Clear input and scroll to bottom
+            questionInput.value = '';
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+        
+        function setQuestion(question) {
+            document.getElementById('userQuestion').value = question;
+        }
+        
+        // Add Enter key support
+        document.getElementById('userQuestion').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                askQuestion();
+            }
+        });
+        
+        // Focus input on page load
+        window.onload = function() {
+            document.getElementById('userQuestion').focus();
+        };
+    </script>
+</body>
+</html> 

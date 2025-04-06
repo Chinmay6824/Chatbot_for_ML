@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response - ML Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .content {
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        .answer {
+            margin-bottom: 20px;
+        }
+        a.back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.back:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+    <h1>ML Chatbot Response</h1>
+    
+    <div class="content">
+        <div class="question">Your question:</div>
+        <div id="user-question" class="answer">
+            (Your question will appear here)
+        </div>
+        
+        <div class="question">Response:</div>
+        <div id="bot-answer" class="answer">
+            Thank you for your question about machine learning! Here are some informative responses:
+        </div>
+        
+        <div class="answer">
+            <p>Machine learning is a field of artificial intelligence that uses statistical techniques to give computer systems the ability to 'learn' from data without being explicitly programmed. Machine learning algorithms build mathematical models based on sample data to make predictions or decisions.</p>
+            
+            <p>If you're interested in a specific aspect of machine learning, please check out these topics:</p>
+            <ul>
+                <li><a href="neural_networks.html">Neural Networks</a> - Computer systems inspired by the brain</li>
+                <li><a href="algorithms.html">Machine Learning Algorithms</a> - Various approaches to learning from data</li>
+                <li><a href="evaluation.html">Evaluation Metrics</a> - How we measure the performance of ML models</li>
+            </ul>
+        </div>
+    </div>
+    
+    <a href="basic_chat.html" class="back">Back to Chat</a>
+    
+    <script>
+        // A very simple script to display the user's question
+        window.onload = function() {
+            // Get the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const question = urlParams.get('question');
+            
+            // Display the question if it exists
+            if (question) {
+                document.getElementById('user-question').textContent = question;
+            }
+        };
+    </script>
+</body>
+</html> 

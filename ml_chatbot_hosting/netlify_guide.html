@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Host ML Chatbot on Netlify - Quick Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2E7D32;
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .step {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .note {
+            background-color: #FFF9C4;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background-color: #388E3C;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Host Your ML Chatbot on Netlify</h1>
+        
+        <p>This guide will walk you through hosting your ML Chatbot on Netlify, which is one of the easiest ways to get your chatbot online with a shareable link.</p>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Create a Netlify Account</strong>
+            <p>Go to <a href="https://app.netlify.com/signup" target="_blank">Netlify's signup page</a> and create a free account. You can sign up with your GitHub, GitLab, or Bitbucket account, or use your email.</p>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Prepare Your Files</strong>
+            <p>Make sure you have these files ready:</p>
+            <ul>
+                <li><code>index.html</code> (your main chatbot file)</li>
+                <li><code>share_ml_chatbot.html</code> (the sharing guide)</li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Upload Your Files</strong>
+            <p>Once logged in to Netlify:</p>
+            <ol>
+                <li>Click on the "Sites" tab</li>
+                <li>Drag and drop your folder containing the HTML files onto the Netlify dashboard</li>
+                <li>Netlify will automatically upload and deploy your site</li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Get Your Shareable Link</strong>
+            <p>After deployment, Netlify will give you a random URL like <code>random-name-123456.netlify.app</code>. This is your shareable link!</p>
+            <p>You can also customize this URL in the site settings if you want something more memorable.</p>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">5</span>
+            <strong>Share Your Chatbot</strong>
+            <p>Now you can share your chatbot with anyone by sending them the Netlify URL. They can access it with a single click!</p>
+        </div>
+        
+        <div class="note">
+            <strong>Note:</strong> The free Netlify plan includes:
+            <ul>
+                <li>Unlimited personal projects</li>
+                <li>Continuous deployment from Git</li>
+                <li>Instant rollbacks</li>
+                <li>HTTPS/SSL certificates</li>
+                <li>Custom domains (optional)</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center;">
+            <a href="index.html" class="button">Return to ML Chatbot</a>
+        </p>
+    </div>
+</body>
+</html> 

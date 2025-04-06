@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static ML Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        h1 {
+            color: #4a6fa5;
+            text-align: center;
+        }
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: 20%;
+            color: #0d47a1;
+        }
+        .bot-message {
+            background-color: #f5f5f5;
+            margin-right: 20%;
+            color: #333;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 20px;
+        }
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #send-button {
+            padding: 10px 20px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #send-button:hover {
+            background-color: #166088;
+        }
+        #reset-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #reset-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Static ML Chatbot</h1>
+    
+    <div id="chat-container" class="chat-container">
+        <div class="message bot-message">👋 Welcome! I'm your ML Chatbot. What would you like to know about machine learning?</div>
+    </div>
+    
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+    
+    <button id="reset-button" onclick="resetChat()">Reset Conversation</button>
+    
+    <script>
+        // ML responses
+        const ML_RESPONSES = {
+            "default": [
+                "Machine learning is a field of artificial intelligence that uses statistical techniques to give computer systems the ability to 'learn' from data.",
+                "In machine learning, we train models on data to make predictions or decisions without being explicitly programmed to perform the task.",
+                "I'd be happy to explain more about specific machine learning concepts. Could you provide more details about what you'd like to know?",
+                "That's an interesting question about machine learning. Let me provide some information that might help.",
+                "Machine learning algorithms can be categorized into supervised learning, unsupervised learning, and reinforcement learning."
+            ],
+            "neural_networks": [
+                "Neural networks are computing systems inspired by the biological neural networks in animal brains. They consist of artificial neurons that can learn from and make decisions based on data.",
+                "Deep learning is a subset of machine learning that uses neural networks with many layers (deep neural networks) to analyze various factors of data.",
+                "Convolutional Neural Networks (CNNs) are particularly effective for image processing tasks, while Recurrent Neural Networks (RNNs) work well with sequential data like text or time series."
+            ],
+            "algorithms": [
+                "Common machine learning algorithms include linear regression, logistic regression, decision trees, random forests, and support vector machines.",
+                "K-means clustering is an unsupervised learning algorithm used to identify clusters of data based on similarity.",
+                "Gradient boosting algorithms like XGBoost and LightGBM are very popular in competitions and real-world applications due to their performance."
+            ],
+            "evaluation": [
+                "Common metrics for evaluating machine learning models include accuracy, precision, recall, F1 score, and area under the ROC curve (AUC).",
+                "Cross-validation is a technique used to assess how the results of a statistical analysis will generalize to an independent data set.",
+                "The confusion matrix provides a detailed breakdown of correct and incorrect classifications for each class in classification problems."
+            ]
+        };
+        
+        // Get elements
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        
+        // Add event listener for Enter key
+        userInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Function to send a message
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+            
+            // Add user message to chat
+            addMessage(message, 'user');
+            
+            // Clear input
+            userInput.value = '';
+            
+            // Get bot response
+            setTimeout(() => {
+                const response = getResponse(message);
+                addMessage(response, 'bot');
+            }, 500);
+        }
+        
+        // Function to add a message to the chat
+        function addMessage(message, type) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(type + '-message');
+            messageElement.textContent = message;
+            
+            chatContainer.appendChild(messageElement);
+            
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        // Function to get a response based on the message
+        function getResponse(message) {
+            message = message.toLowerCase();
+            
+            // Check for keywords to determine category
+            if (message.includes('neural') || message.includes('network') || 
+                message.includes('deep') || message.includes('cnn') || 
+                message.includes('rnn') || message.includes('lstm')) {
+                return getRandomResponse('neural_networks');
+            } else if (message.includes('algorithm') || message.includes('regression') || 
+                       message.includes('tree') || message.includes('forest') || 
+                       message.includes('svm') || message.includes('cluster')) {
+                return getRandomResponse('algorithms');
+            } else if (message.includes('accuracy') || message.includes('precision') || 
+                       message.includes('recall') || message.includes('f1') || 
+                       message.includes('auc') || message.includes('evaluate') || 
+                       message.includes('metric')) {
+                return getRandomResponse('evaluation');
+            } else {
+                return getRandomResponse('default');
+            }
+        }
+        
+        // Function to get a random response from a category
+        function getRandomResponse(category) {
+            const responses = ML_RESPONSES[category];
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            return responses[randomIndex];
+        }
+        
+        // Function to reset the chat
+        function resetChat() {
+            chatContainer.innerHTML = '';
+            addMessage('👋 Welcome! I\'m your ML Chatbot. What would you like to know about machine learning?', 'bot');
+        }
+    </script>
+</body>
+</html> 

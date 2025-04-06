@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic ML Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #10a37f;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .chat-box {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .bot-message {
+            background-color: #f0f4f9;
+        }
+        
+        .user-message {
+            background-color: #e3f2fd;
+            text-align: right;
+        }
+        
+        form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #10a37f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0c8b6c;
+        }
+        
+        .topics {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        
+        .topics h2 {
+            color: #10a37f;
+        }
+        
+        .topic-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .topic-button {
+            background-color: #e3f2fd;
+            border: 1px solid #10a37f;
+            color: #10a37f;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .topic-button:hover {
+            background-color: #10a37f;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ML Chatbot</h1>
+        
+        <div class="chat-box" id="chatBox">
+            <div class="message bot-message">
+                Hello! I'm a machine learning chatbot. Ask me any questions about ML concepts like neural networks, 
+                supervised learning, deep learning, or any other ML topic.
+            </div>
+        </div>
+        
+        <form id="questionForm" onsubmit="return handleSubmit()">
+            <input type="text" id="userInput" placeholder="Type your ML question here..." required>
+            <button type="submit">Ask</button>
+        </form>
+        
+        <div class="topics">
+            <h2>Suggested Topics</h2>
+            <div class="topic-buttons">
+                <button type="button" class="topic-button" onclick="selectTopic('What is machine learning?')">Machine Learning</button>
+                <button type="button" class="topic-button" onclick="selectTopic('Explain neural networks')">Neural Networks</button>
+                <button type="button" class="topic-button" onclick="selectTopic('What is deep learning?')">Deep Learning</button>
+                <button type="button" class="topic-button" onclick="selectTopic('What is supervised learning?')">Supervised Learning</button>
+                <button type="button" class="topic-button" onclick="selectTopic('What is CNN?')">CNN</button>
+                <button type="button" class="topic-button" onclick="selectTopic('What is reinforcement learning?')">Reinforcement Learning</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ML responses database
+        const mlResponses = {
+            "machine learning": "Machine learning is a field of artificial intelligence that uses statistical techniques to give computer systems the ability to 'learn' from data without being explicitly programmed. It focuses on developing algorithms that can access data and use it to learn for themselves.",
+            "neural network": "Neural networks are computing systems inspired by the biological neural networks in animal brains. They consist of artificial neurons that can learn from and make decisions based on data. The connections between neurons can be strengthened or weakened through training, allowing the network to learn patterns in data.",
+            "deep learning": "Deep learning is a subset of machine learning that uses neural networks with multiple layers (deep neural networks) to analyze various factors of data. It's particularly powerful for tasks like image and speech recognition, natural language processing, and other complex pattern recognition tasks.",
+            "supervised learning": "Supervised learning is a type of machine learning where the algorithm learns from labeled training data, and makes predictions based on that data. The algorithm is trained on input-output pairs, where the desired output is known. Examples include classification (predicting a category) and regression (predicting a numerical value).",
+            "unsupervised learning": "Unsupervised learning is a type of machine learning where the algorithm learns patterns from unlabeled data. The system tries to learn the patterns and structure from the data without explicit guidance. Common techniques include clustering (grouping similar data points) and dimensionality reduction (simplifying data while preserving important information).",
+            "reinforcement learning": "Reinforcement learning is a type of machine learning where an agent learns to make decisions by taking actions in an environment to maximize a reward. The agent learns through trial and error, receiving feedback in the form of rewards or penalties. It's commonly used in robotics, game playing, and autonomous systems.",
+            "cnn": "Convolutional Neural Networks (CNNs) are a class of deep neural networks most commonly applied to analyzing visual imagery. They use a mathematical operation called convolution in place of general matrix multiplication in at least one of their layers. CNNs are particularly effective for image classification, object detection, and facial recognition tasks.",
+            "rnn": "Recurrent Neural Networks (RNNs) are a class of neural networks where connections between nodes form a directed graph along a temporal sequence. This allows them to exhibit temporal dynamic behavior, making them suitable for tasks involving sequential data like text or time series. However, traditional RNNs suffer from the vanishing gradient problem during training.",
+            "lstm": "Long Short-Term Memory (LSTM) networks are a type of RNN that can learn long-term dependencies in sequence prediction problems. They have feedback connections and special memory cells that can maintain information over long periods, solving the vanishing gradient problem of standard RNNs. LSTMs are widely used in speech recognition, language modeling, and time series prediction."
+        };
+        
+        // Function to handle form submission
+        function handleSubmit() {
+            const userInput = document.getElementById('userInput');
+            const chatBox = document.getElementById('chatBox');
+            const question = userInput.value.trim().toLowerCase();
+            
+            if (question === '') return false;
+            
+            // Add user message to chat
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.textContent = userInput.value;
+            chatBox.appendChild(userMessage);
+            
+            // Find response
+            let response = "I'm not sure about that specific ML concept. Could you try asking about machine learning, neural networks, deep learning, or supervised learning?";
+            
+            // Simple matching algorithm
+            for (const [key, value] of Object.entries(mlResponses)) {
+                if (question.includes(key) || 
+                    question.includes(`what is ${key}`) || 
+                    question.includes(`explain ${key}`)) {
+                    response = value;
+                    break;
+                }
+            }
+            
+            // Add bot response after a small delay
+            setTimeout(() => {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'message bot-message';
+                botMessage.textContent = response;
+                chatBox.appendChild(botMessage);
+                
+                // Scroll to the bottom
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+            
+            // Clear input
+            userInput.value = '';
+            
+            // Scroll to bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Prevent form submission
+            return false;
+        }
+        
+        // Function to select a topic
+        function selectTopic(topic) {
+            document.getElementById('userInput').value = topic;
+        }
+        
+        // Focus input on page load
+        window.onload = function() {
+            document.getElementById('userInput').focus();
+        };
+    </script>
+</body>
+</html> 

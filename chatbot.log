@@ -1,0 +1,152 @@
+2025-03-11 19:02:37,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.12:5000
+2025-03-11 19:02:37,610 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-11 19:02:37,615 - INFO -  * Restarting with stat
+2025-03-11 19:02:38,205 - WARNING -  * Debugger is active!
+2025-03-11 19:02:38,209 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:06:15,994 - INFO -  * Detected change in 'C:\\ChAtbotML\\run.py', reloading
+2025-03-11 19:06:16,101 - INFO -  * Restarting with stat
+2025-03-11 19:06:16,595 - WARNING -  * Debugger is active!
+2025-03-11 19:06:16,608 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:06:27,776 - INFO -  * Detected change in 'C:\\ChAtbotML\\run.py', reloading
+2025-03-11 19:06:27,861 - INFO -  * Restarting with stat
+2025-03-11 19:06:28,342 - WARNING -  * Debugger is active!
+2025-03-11 19:06:28,346 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:15:10,300 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.12:5000
+2025-03-11 19:15:10,300 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-11 19:15:10,303 - INFO -  * Restarting with stat
+2025-03-11 19:15:10,818 - WARNING -  * Debugger is active!
+2025-03-11 19:15:10,822 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:15:16,369 - INFO - 127.0.0.1 - - [11/Mar/2025 19:15:16] "GET / HTTP/1.1" 200 -
+2025-03-11 19:15:16,830 - INFO - 127.0.0.1 - - [11/Mar/2025 19:15:16] "GET /service-worker.js HTTP/1.1" 200 -
+2025-03-11 19:15:22,219 - INFO - {"timestamp": "2025-03-11T19:15:22.218758", "user_message": "What is reinforcement learning?", "corrected_message": "What is reinforcement learning", "intent_tag": "types_ml", "is_compound_question": false, "response": "Supervised learning uses labeled data to train models, unsupervised learning finds patterns in unlabeled data, and reinforcement learning involves learning from actions and rewards."}
+2025-03-11 19:15:22,221 - INFO - 127.0.0.1 - - [11/Mar/2025 19:15:22] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:15:27,601 - INFO - {"timestamp": "2025-03-11T19:15:27.601606", "user_message": "What is deep learning?", "corrected_message": "What is deep learning", "intent_tag": "deep_learning_intro", "is_compound_question": false, "response": "This is an important concept in ML. Deep learning differs from traditional neural networks in that it uses more layers, enabling it to learn complex representations of data."}
+2025-03-11 19:15:27,603 - INFO - 127.0.0.1 - - [11/Mar/2025 19:15:27] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:15:55,604 - INFO - 192.168.1.12 - - [11/Mar/2025 19:15:55] "GET / HTTP/1.1" 200 -
+2025-03-11 19:16:03,758 - INFO - 192.168.1.12 - - [11/Mar/2025 19:16:03] "GET / HTTP/1.1" 200 -
+2025-03-11 19:20:04,125 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:20:04,185 - INFO -  * Restarting with stat
+2025-03-11 19:20:04,663 - WARNING -  * Debugger is active!
+2025-03-11 19:20:04,666 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:25:08,866 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:08] "GET / HTTP/1.1" 200 -
+2025-03-11 19:25:12,896 - INFO - {"timestamp": "2025-03-11T19:25:12.896970", "user_message": "What is machine learning?", "corrected_message": "What is machine learning", "intent_tag": "introduction_motivation", "is_compound_question": false, "response": "Machine learning allows us to create systems that adapt to new data, making them more efficient and effective over time."}
+2025-03-11 19:25:12,897 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:12] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:25:16,079 - INFO - {"timestamp": "2025-03-11T19:25:16.079686", "user_message": "Explain neural networks", "corrected_message": "Explain neural network", "intent_tag": "neural_networks_intro", "is_compound_question": false, "response": "Neural networks are computational models inspired by the human brain, composed of layers of nodes (neurons) that process information through weighted connections."}
+2025-03-11 19:25:16,080 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:16] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:25:19,743 - INFO - {"timestamp": "2025-03-11T19:25:19.743975", "user_message": "What is deep learning?", "corrected_message": "What is deep learning", "intent_tag": "deep_learning_intro", "is_compound_question": false, "response": "I'm glad you asked about this. Deep learning differs from traditional neural networks in that it uses more layers, enabling it to learn complex representations of data."}
+2025-03-11 19:25:19,744 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:19] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:25:46,483 - INFO - {"timestamp": "2025-03-11T19:25:46.483598", "user_message": "what is cnn", "corrected_message": null, "intent_tag": "f1_score", "is_compound_question": false, "response": "F1-score is the harmonic mean of precision and recall. It is used when you need to balance the two metrics, especially in imbalanced datasets."}
+2025-03-11 19:25:46,484 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:46] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:25:54,945 - INFO - {"timestamp": "2025-03-11T19:25:54.945992", "user_message": "What is reinforcement learning?", "corrected_message": "What is reinforcement learning", "intent_tag": "types_ml", "is_compound_question": false, "response": "Machine learning can be categorized into three main types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning."}
+2025-03-11 19:25:54,945 - INFO - 192.168.1.12 - - [11/Mar/2025 19:25:54] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:26:00,129 - INFO - {"timestamp": "2025-03-11T19:26:00.129191", "user_message": "Supervised vs Unsupervised learning", "corrected_message": "supervised vs unsupervised learning", "intent_tag": "unsupervised_learning_algorithms", "is_compound_question": true, "response": "Common unsupervised learning algorithms include k-means, DBSCAN, hierarchical clustering, PCA, and association rule learning."}
+2025-03-11 19:26:00,130 - INFO - 192.168.1.12 - - [11/Mar/2025 19:26:00] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:27:50,126 - INFO - {"timestamp": "2025-03-11T19:27:50.126362", "user_message": "What is reinforcement learning?", "corrected_message": "What is reinforcement learning", "intent_tag": "types_ml", "is_compound_question": false, "response": "Machine learning can be categorized into three main types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning."}
+2025-03-11 19:27:50,127 - INFO - 192.168.1.12 - - [11/Mar/2025 19:27:50] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:29:51,087 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:30:35,749 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.12:5000
+2025-03-11 19:30:35,750 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-11 19:30:35,751 - INFO -  * Restarting with stat
+2025-03-11 19:30:36,126 - WARNING -  * Debugger is active!
+2025-03-11 19:30:36,129 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:30:41,848 - INFO - 127.0.0.1 - - [11/Mar/2025 19:30:41] "GET / HTTP/1.1" 200 -
+2025-03-11 19:30:42,356 - INFO - 127.0.0.1 - - [11/Mar/2025 19:30:42] "GET /service-worker.js HTTP/1.1" 200 -
+2025-03-11 19:30:50,849 - INFO - {"timestamp": "2025-03-11T19:30:50.849343", "user_message": "what is cnn", "corrected_message": null, "intent_tag": "f1_score", "is_compound_question": false, "response": "F1-score is the harmonic mean of precision and recall. It is used when you need to balance the two metrics, especially in imbalanced datasets."}
+2025-03-11 19:30:50,852 - INFO - 127.0.0.1 - - [11/Mar/2025 19:30:50] "POST /api/chat HTTP/1.1" 200 -
+2025-03-11 19:31:23,902 - INFO - 127.0.0.1 - - [11/Mar/2025 19:31:23] "GET / HTTP/1.1" 200 -
+2025-03-11 19:31:24,039 - INFO - 127.0.0.1 - - [11/Mar/2025 19:31:24] "GET /service-worker.js HTTP/1.1" 200 -
+2025-03-11 19:33:05,395 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:33:05,447 - INFO -  * Restarting with stat
+2025-03-11 19:33:05,837 - WARNING -  * Debugger is active!
+2025-03-11 19:33:05,840 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:33:56,669 - INFO - 127.0.0.1 - - [11/Mar/2025 19:33:56] "GET / HTTP/1.1" 200 -
+2025-03-11 19:34:08,608 - INFO - 127.0.0.1 - - [11/Mar/2025 19:34:08] "GET / HTTP/1.1" 200 -
+2025-03-11 19:34:16,784 - INFO - 127.0.0.1 - - [11/Mar/2025 19:34:16] "GET / HTTP/1.1" 200 -
+2025-03-11 19:34:36,824 - INFO - 192.168.1.12 - - [11/Mar/2025 19:34:36] "GET / HTTP/1.1" 200 -
+2025-03-11 19:37:19,980 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:37:20,048 - INFO -  * Restarting with stat
+2025-03-11 19:37:20,508 - WARNING -  * Debugger is active!
+2025-03-11 19:37:20,511 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:38:49,925 - INFO - 192.168.1.12 - - [11/Mar/2025 19:38:49] "GET / HTTP/1.1" 200 -
+2025-03-11 19:39:12,385 - INFO - 192.168.1.12 - - [11/Mar/2025 19:39:12] "GET / HTTP/1.1" 200 -
+2025-03-11 19:41:25,030 - INFO - 192.168.1.12 - - [11/Mar/2025 19:41:25] "GET / HTTP/1.1" 200 -
+2025-03-11 19:44:11,559 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:44:11,651 - INFO -  * Restarting with stat
+2025-03-11 19:44:12,120 - WARNING -  * Debugger is active!
+2025-03-11 19:44:12,123 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 19:44:15,644 - INFO -  * Detected change in 'C:\\ChAtbotML\\ml_chatbot_intents.py', reloading
+2025-03-11 19:44:15,722 - INFO -  * Restarting with stat
+2025-03-11 19:44:16,074 - WARNING -  * Debugger is active!
+2025-03-11 19:44:16,076 - INFO -  * Debugger PIN: 888-982-085
+2025-03-11 22:13:40,225 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.12:5000
+2025-03-11 22:13:40,225 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-11 22:13:40,227 - INFO -  * Restarting with stat
+2025-03-11 22:13:40,636 - WARNING -  * Debugger is active!
+2025-03-11 22:13:40,639 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:13:46,169 - INFO - 127.0.0.1 - - [11/Mar/2025 22:13:46] "GET / HTTP/1.1" 200 -
+2025-03-11 22:13:46,391 - INFO - 127.0.0.1 - - [11/Mar/2025 22:13:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-11 22:14:03,943 - INFO - 127.0.0.1 - - [11/Mar/2025 22:14:03] "GET / HTTP/1.1" 200 -
+2025-03-11 22:14:05,595 - INFO - 127.0.0.1 - - [11/Mar/2025 22:14:05] "GET / HTTP/1.1" 200 -
+2025-03-11 22:17:23,944 - INFO - 127.0.0.1 - - [11/Mar/2025 22:17:23] "GET / HTTP/1.1" 200 -
+2025-03-11 22:17:45,551 - INFO - 127.0.0.1 - - [11/Mar/2025 22:17:45] "GET / HTTP/1.1" 200 -
+2025-03-11 22:17:45,922 - INFO - 127.0.0.1 - - [11/Mar/2025 22:17:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-11 22:20:32,124 - INFO -  * Detected change in 'C:\\ChAtbotML\\chatgpt_handler.py', reloading
+2025-03-11 22:20:32,229 - INFO -  * Restarting with stat
+2025-03-11 22:20:32,812 - WARNING -  * Debugger is active!
+2025-03-11 22:20:32,815 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:22:07,966 - INFO -  * Detected change in 'C:\\ChAtbotML\\chatgpt_server.py', reloading
+2025-03-11 22:22:08,018 - INFO -  * Restarting with stat
+2025-03-11 22:22:08,459 - WARNING -  * Debugger is active!
+2025-03-11 22:22:08,462 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:22:29,623 - INFO -  * Detected change in 'C:\\ChAtbotML\\run_chatgpt.py', reloading
+2025-03-11 22:22:29,705 - INFO -  * Restarting with stat
+2025-03-11 22:22:30,193 - WARNING -  * Debugger is active!
+2025-03-11 22:22:30,197 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:26:35,783 - INFO -  * Detected change in 'C:\\ChAtbotML\\chatgpt_handler.py', reloading
+2025-03-11 22:26:35,875 - INFO -  * Restarting with stat
+2025-03-11 22:26:36,424 - WARNING -  * Debugger is active!
+2025-03-11 22:26:36,428 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:27:13,657 - INFO - 127.0.0.1 - - [11/Mar/2025 22:27:13] "GET / HTTP/1.1" 200 -
+2025-03-11 22:37:19,318 - INFO -  * Detected change in 'C:\\ChAtbotML\\run_chatgpt.py', reloading
+2025-03-11 22:37:19,412 - INFO -  * Restarting with stat
+2025-03-11 22:37:19,864 - WARNING -  * Debugger is active!
+2025-03-11 22:37:19,867 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:38:48,212 - INFO -  * Detected change in 'C:\\ChAtbotML\\simple_server.py', reloading
+2025-03-11 22:38:48,285 - INFO -  * Restarting with stat
+2025-03-11 22:38:48,745 - WARNING -  * Debugger is active!
+2025-03-11 22:38:48,749 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:39:10,885 - INFO -  * Detected change in 'C:\\ChAtbotML\\run_simple.py', reloading
+2025-03-11 22:39:10,956 - INFO -  * Restarting with stat
+2025-03-11 22:39:11,455 - WARNING -  * Debugger is active!
+2025-03-11 22:39:11,458 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:40:58,987 - INFO - 127.0.0.1 - - [11/Mar/2025 22:40:58] "GET / HTTP/1.1" 200 -
+2025-03-11 22:41:07,202 - INFO - 127.0.0.1 - - [11/Mar/2025 22:41:07] "GET / HTTP/1.1" 200 -
+2025-03-11 22:41:08,936 - INFO - 127.0.0.1 - - [11/Mar/2025 22:41:08] "GET / HTTP/1.1" 200 -
+2025-03-11 22:44:36,282 - INFO -  * Detected change in 'C:\\ChAtbotML\\fix_chatbot.py', reloading
+2025-03-11 22:44:36,369 - INFO -  * Restarting with stat
+2025-03-11 22:44:36,934 - WARNING -  * Debugger is active!
+2025-03-11 22:44:36,936 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:45:44,442 - INFO - 127.0.0.1 - - [11/Mar/2025 22:45:44] "GET / HTTP/1.1" 200 -
+2025-03-11 22:45:45,447 - INFO - 127.0.0.1 - - [11/Mar/2025 22:45:45] "GET / HTTP/1.1" 200 -
+2025-03-11 22:45:50,499 - INFO - 127.0.0.1 - - [11/Mar/2025 22:45:50] "GET / HTTP/1.1" 200 -
+2025-03-11 22:45:51,542 - INFO - 127.0.0.1 - - [11/Mar/2025 22:45:51] "GET / HTTP/1.1" 200 -
+2025-03-11 22:46:26,764 - INFO - 127.0.0.1 - - [11/Mar/2025 22:46:26] "GET / HTTP/1.1" 200 -
+2025-03-11 22:48:41,692 - INFO -  * Detected change in 'C:\\ChAtbotML\\super_simple_chatbot.py', reloading
+2025-03-11 22:48:41,744 - INFO -  * Restarting with stat
+2025-03-11 22:48:42,189 - WARNING -  * Debugger is active!
+2025-03-11 22:48:42,192 - INFO -  * Debugger PIN: 330-091-086
+2025-03-11 22:53:09,804 - INFO - 127.0.0.1 - - [11/Mar/2025 22:53:09] "GET / HTTP/1.1" 200 -
+2025-03-11 22:53:19,287 - INFO - 127.0.0.1 - - [11/Mar/2025 22:53:19] "GET / HTTP/1.1" 200 -
+2025-03-11 22:53:19,603 - INFO - 127.0.0.1 - - [11/Mar/2025 22:53:19] "GET / HTTP/1.1" 200 -
