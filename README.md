@@ -30,8 +30,7 @@ If you prefer not to use GitHub Pages, you can also host the chatbot on:
 - `open_enhanced_chatbot.bat`: Batch file to open the chatbot locally
 
 ## Features
-
-- Over 60 machine learning concepts and definitions
+- Give a full description of Machine Learning
 - Simple, clean interface
 - No server required (runs entirely in the browser)
 - Works offline once loaded 
