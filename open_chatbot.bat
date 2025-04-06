@@ -1,5 +1,8 @@
 @echo off
-echo Opening Ultra Simple ML Chatbot in your default browser...
-start ultra_simple_ml_chat.html
-echo If the file doesn't open automatically, please double-click ultra_simple_ml_chat.html in your file explorer.
+echo Opening ML Chatbot in your default browser...
+start "" "index.html"
+echo If the chatbot doesn't open automatically, please try these steps:
+echo 1. Right-click on index.html
+echo 2. Select "Open with"
+echo 3. Choose your preferred web browser (Chrome, Firefox, Edge, etc.)
 pause 

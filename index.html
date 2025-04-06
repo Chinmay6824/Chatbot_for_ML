@@ -97,27 +97,29 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 20px;
         }
         
-        .share-button {
-            background-color: #FF9800;
+        .feedback-button {
+            background-color: #2196F3;
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 8px 15px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
             display: flex;
             align-items: center;
-            text-decoration: none;
+            margin-left: 10px;
         }
         
-        .share-button:hover {
-            background-color: #F57C00;
+        .feedback-button:hover {
+            background-color: #1976D2;
         }
         
-        .share-icon {
+        .feedback-icon {
             margin-right: 5px;
+            font-size: 16px;
         }
         
         .footer {
@@ -126,15 +128,87 @@
             font-size: 12px;
             color: #777;
         }
+        
+        /* Feedback Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .feedback-form {
+            margin-top: 20px;
+        }
+        
+        .feedback-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        .feedback-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .feedback-form button {
+            width: 100%;
+        }
+        
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header-container">
             <h1>ML Chatbot</h1>
-            <a href="share_ml_chatbot.html" class="share-button">
-                <span class="share-icon">📤</span> Share
-            </a>
+            <button class="feedback-button" onclick="openFeedbackModal()">
+                <span class="feedback-icon">📝</span> Feedback
+            </button>
         </div>
         
         <div class="chat-area" id="chatArea">
@@ -160,6 +234,33 @@
         
         <div class="footer">
             <p>This chatbot runs entirely in your browser and doesn't require an internet connection once loaded.</p>
+        </div>
+    </div>
+    
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFeedbackModal()">&times;</span>
+            <h2>Provide Feedback</h2>
+            <p>Help us improve the ML Chatbot by sharing your thoughts!</p>
+            
+            <div class="feedback-form">
+                <select id="feedbackType">
+                    <option value="">Select feedback type</option>
+                    <option value="suggestion">Suggestion</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="content">Content Request</option>
+                    <option value="other">Other</option>
+                </select>
+                
+                <textarea id="feedbackText" placeholder="Enter your feedback here..."></textarea>
+                
+                <button onclick="submitFeedback()">Submit Feedback</button>
+                
+                <div id="thankYouMessage" class="thank-you-message">
+                    Thank you for your feedback! We appreciate your input.
+                </div>
+            </div>
         </div>
     </div>
     
@@ -308,6 +409,50 @@
         window.onload = function() {
             document.getElementById('userQuestion').focus();
         };
+        
+        // Feedback Modal Functions
+        function openFeedbackModal() {
+            document.getElementById('feedbackModal').style.display = 'block';
+        }
+        
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'none';
+            document.getElementById('feedbackText').value = '';
+            document.getElementById('feedbackType').value = '';
+            document.querySelector('.feedback-form').style.display = 'block';
+        }
+        
+        function submitFeedback() {
+            const feedbackType = document.getElementById('feedbackType').value;
+            const feedbackText = document.getElementById('feedbackText').value;
+            
+            if (!feedbackType || !feedbackText) {
+                alert('Please select a feedback type and enter your feedback.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show a thank you message
+            document.querySelector('.feedback-form').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            
+            // Reset the form and show it again after 2 seconds
+            setTimeout(function() {
+                document.getElementById('feedbackText').value = '';
+                document.getElementById('feedbackType').value = '';
+                document.querySelector('.feedback-form').style.display = 'block';
+                document.getElementById('thankYouMessage').style.display = 'none';
+            }, 2000);
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('feedbackModal');
+            if (event.target == modal) {
+                closeFeedbackModal();
+            }
+        }
     </script>
 </body>
 </html> 
